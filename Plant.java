@@ -46,7 +46,7 @@ public class Plant {
 		}
 		
 		else if (t == 5) {
-			name = "Eggplant"; //setting name of type of plant
+			name = "Grapes"; //setting name of type of plant
 			turnsToGrow = r.nextInt(2) + 2; // creates a random number of turns needed before harvest this particular range is 2-4
 			waterPerTurn = 1;
 			value = r.nextInt(5) + 6; // setting random sell value for the plant this particular range is $6-$11
