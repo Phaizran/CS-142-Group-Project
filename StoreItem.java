@@ -30,7 +30,7 @@ public class StoreItem extends Button {
 				this.name = "Cactus Seed";
 				this.cost = 5;
 			}
-			else if(plantType == 1) {
+			else if(plantType == 3) {
 				this.name = "Kitten Seed";
 				this.cost = 10;
 			}//else if () {} TO DO: add more else if statements for other plant types
