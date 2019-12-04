@@ -159,12 +159,13 @@ public class GardenScreen extends Screen{
 		g.fillOval(water.x, water.y, water.width, water.height);
 		
 		//next day button
+		//next day button
 		g.setColor(Color.pink);
-		g.fillRect((width - plotSize*4), 20, plotSize *3, plotSize);
+		g.fillRect((width - plotSize*4), (int)(height*.05), plotSize *3, plotSize);
 		
 		g.setColor(Color.black);
-		g.drawRect((width - plotSize*4), 20, plotSize *3, plotSize);
-		g.drawString("Next Day", (int)(width - plotSize*3.8), 45);
+		g.drawRect((width - plotSize*4), (int)(height*.05), plotSize *3, plotSize);
+		g.drawString("Next Day", (int)(width - plotSize*3.8), (int)(height*.1));
 	}
 
 
