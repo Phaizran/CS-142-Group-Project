@@ -53,7 +53,7 @@ public class StoreItem extends Button {
 		}
 		else if ( itemType == 1) {//TO DO: add more else if statements for other item types
 			this.name = "Fertilizer";
-				this.cost = 3;
+				this.cost = 4;
 		} 
 	}
 
