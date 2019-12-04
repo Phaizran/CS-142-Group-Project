@@ -33,8 +33,28 @@ public class StoreItem extends Button {
 			else if(plantType == 3) {
 				this.name = "Kitten Seed";
 				this.cost = 10;
+			}
+			else if (plantType == 4) { 
+				this.name = "Strawberry Seed";
+				this.cost = 2;
+			}
+			else if(plantType == 5) {
+				this.name = "Grape Seed";
+				this.cost = 4;
+			}
+			else if(plantType == 6) {
+				this.name = "Broccoli Seed";
+				this.cost = 6;
+			}
+			else if(plantType == 7) {
+				this.name = "Pumpkin Seed";
+				this.cost = 8;
 			}//else if () {} TO DO: add more else if statements for other plant types
-		}//else if () {} TO DO: add more else if statements for other item types
+		}
+		else if ( itemType == 1) {//TO DO: add more else if statements for other item types
+			this.name = "Fertilizer";
+				this.cost = 3;
+		} 
 	}
 
 	@Override
