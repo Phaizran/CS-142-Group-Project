@@ -23,7 +23,7 @@ public class Plant {
 		else if(t == 1) {
 			name = "Lavender";
 			turnsToGrow = r.nextInt(3) + 5;
-			waterPerTurn = 1;
+			waterPerTurn = 2;
 			value = r.nextInt(8) + 6;
 		}
 		else if( t == 2) {
@@ -35,7 +35,7 @@ public class Plant {
 		else if(t == 3) {
 			name = "Meow-er";
 			turnsToGrow = r.nextInt(10) + 8;
-			waterPerTurn = 1;
+			waterPerTurn = 3;
 			value = r.nextInt(15) + 12;
 		}
 		else if (t == 4) {
@@ -127,8 +127,93 @@ public class Plant {
 			g.drawOval((int)(plotX + (plotSize / 2.7)), (int)(plotY + (plotSize / 4.8)), (int)(plotSize / 13), (int)(plotSize / 15));
 			g.drawOval((int)(plotX + (plotSize / 2)), (int)(plotY + (plotSize / 4.8)), (int)(plotSize / 13), (int)(plotSize / 15));
 		}
+		else if (type == 4) {//strawberry
+			g.setColor(new Color(65, 199, 38)); //stem
+			g.fillRect((int)(plotX + plotSize /2.3), (int)(plotY + (plotSize*.15)), (int)(plotSize/5.5), (int)(plotSize/5.5));
+			
+			g.setColor(Color.red);
+			g.fillOval((int)(plotX + plotSize/8.), (int)(plotY + plotSize/4.), (int) (plotSize/2.0), (int)(plotSize/2.0));
+			g.fillOval((int)(plotX + plotSize/2.5), (int)(plotY + plotSize/4.), (int) (plotSize/2.0), (int)(plotSize/2.0));
+			g.fillOval((int)(plotX + plotSize/4.), (int)(plotY + plotSize/2.3), (int) (plotSize/2.0), (int)(plotSize/2.0));
+				
+		}
+		else if (type == 5) {//grapes
+			g.setColor(new Color(115, 232, 90));// leaf
+			g.fillRect((int)(plotX + plotSize /2.5), (int)(plotY + (plotSize*.15)), (int)(plotSize/5.5), (int)(plotSize/5.5));
+			
+			g.setColor(new Color(139, 58, 201));//Grapes
+			g.fillOval((int)(plotX + plotSize/10.), (int)(plotY + plotSize/4.), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.fillOval((int)(plotX + plotSize/5.), (int)(plotY + plotSize/4.), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.fillOval((int)(plotX + plotSize/2.7), (int)(plotY + plotSize/4.), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.fillOval((int)(plotX + plotSize/2.), (int)(plotY + plotSize/4.), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.fillOval((int)(plotX + plotSize/1.5), (int)(plotY + plotSize/4.), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			
+			g.setColor(new Color(93, 38, 135));
+			g.drawOval((int)(plotX + plotSize/10.), (int)(plotY + plotSize/4.), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.drawOval((int)(plotX + plotSize/5.), (int)(plotY + plotSize/4.), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.drawOval((int)(plotX + plotSize/2.7), (int)(plotY + plotSize/4.), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.drawOval((int)(plotX + plotSize/2.), (int)(plotY + plotSize/4.), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.drawOval((int)(plotX + plotSize/1.5), (int)(plotY + plotSize/4.), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			
+			g.setColor(new Color(139, 58, 201));
+			g.fillOval((int)(plotX + plotSize/6.), (int)(plotY + plotSize/2.3), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.fillOval((int)(plotX + plotSize/4.), (int)(plotY + plotSize/2.3), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.fillOval((int)(plotX + plotSize/2.7), (int)(plotY + plotSize/2.3), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.fillOval((int)(plotX + plotSize/1.8), (int)(plotY + plotSize/2.3), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			
+			g.setColor(new Color(93, 38, 135));
+			g.drawOval((int)(plotX + plotSize/6.), (int)(plotY + plotSize/2.3), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.drawOval((int)(plotX + plotSize/4.), (int)(plotY + plotSize/2.3), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.drawOval((int)(plotX + plotSize/2.7), (int)(plotY + plotSize/2.3), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.drawOval((int)(plotX + plotSize/1.8), (int)(plotY + plotSize/2.3), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			
+			g.setColor(new Color(139, 58, 201));
+			g.fillOval((int)(plotX + plotSize/4.), (int)(plotY + plotSize/1.7), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.fillOval((int)(plotX + plotSize/2.7), (int)(plotY + plotSize/1.7), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.fillOval((int)(plotX + plotSize/2.), (int)(plotY + plotSize/1.7), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			
+			g.setColor(new Color(93, 38, 135));
+			g.drawOval((int)(plotX + plotSize/4.), (int)(plotY + plotSize/1.7), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.drawOval((int)(plotX + plotSize/2.7), (int)(plotY + plotSize/1.7), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			g.drawOval((int)(plotX + plotSize/2.), (int)(plotY + plotSize/1.7), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			
+			g.setColor(new Color(139, 58, 201));
+			g.fillOval((int)(plotX + plotSize/2.7), (int)(plotY + plotSize/1.3), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			
+			g.setColor(new Color(93, 38, 135));
+			g.drawOval((int)(plotX + plotSize/2.7), (int)(plotY + plotSize/1.3), (int) (plotSize/4.0), (int)(plotSize/4.0));
+			
+		}
+		else if (type== 6) {//Broccoli
+			g.setColor(new Color(115, 232, 90));// stem
+			g.fillRoundRect((int)(plotX + plotSize/2.6), (int)(plotY + plotSize/3.), (int) (plotSize/4.), (int)(plotSize/1.5), 5, 5);
+			
+			g.setColor(new Color(60, 143, 43)); //top
+			g.fillOval((int)(plotX + (plotSize/10.)), (int)(plotY + plotSize/3.), (int) (plotSize/3.0), (int)(plotSize/3.0));
+			g.fillOval((int)(plotX + (plotSize/4.5)), (int)(plotY + plotSize/5.), (int) (plotSize/2.5), (int)(plotSize/2.5));
+			g.fillOval((int)(plotX + (plotSize/2.5)), (int)(plotY + plotSize/5.), (int) (plotSize/2.5), (int)(plotSize/2.5));
+			g.fillOval((int)(plotX + (plotSize/1.7)), (int)(plotY + plotSize/3.), (int) (plotSize/3.0), (int)(plotSize/3.0));
+			
+			g.setColor(new Color(8, 102, 8)); //top outline
+			g.drawOval((int)(plotX + (plotSize/10.)), (int)(plotY + plotSize/3.), (int) (plotSize/3.0), (int)(plotSize/3.0));
+			g.drawOval((int)(plotX + (plotSize/4.5)), (int)(plotY + plotSize/5.), (int) (plotSize/2.5), (int)(plotSize/2.5));
+			g.drawOval((int)(plotX + (plotSize/2.5)), (int)(plotY + plotSize/5.), (int) (plotSize/2.5), (int)(plotSize/2.5));
+			g.drawOval((int)(plotX + (plotSize/1.7)), (int)(plotY + plotSize/3.), (int) (plotSize/3.0), (int)(plotSize/3.0));
+
+		}
+		else if(type == 7) { //pumpkin
+			g.setColor(new Color(242, 120, 27)); //main pumpkin
+			g.fillOval((int)(plotX + plotSize/10), (int)(plotY + (plotSize*.2)), (int)(plotSize *.9) , (int)(plotSize *.8));
+			
+			g.setColor(new Color(65, 199, 38)); //stem
+			g.fillRect((int)(plotX + plotSize /2.2), (int)(plotY + (plotSize*.15)), (int)(plotSize/5.5), (int)(plotSize/5.5));
+			
+			g.setColor(Color.yellow); //face
+			g.fillRoundRect((int)(plotX + plotSize/5.), (int)(plotY + plotSize/3.), (int) (plotSize/5.0), (int)(plotSize/5.0), 5, 5);
+			g.fillRoundRect((int)(plotX + plotSize/1.5), (int)(plotY + plotSize/3.), (int) (plotSize/5.0), (int)(plotSize/5.0), 5, 5);
+			g.fillOval((int)(plotX + plotSize/3.), (int)(plotY + (plotSize/1.5)), (int)(plotSize /3.) , (int)(plotSize /7.));
+		}
 		//else if () {}
 //		TO DO: write corresponding else if draw calls for other types of plants
 	}
-
 }
