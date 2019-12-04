@@ -18,6 +18,8 @@ public class Start {
 	static MouseHandler mH = new MouseHandler();
 	static boolean isWatering = false;
 	static boolean usingItem = false;
+	static int itemInUse = -1;
+	static int seedInUse = -1;
 	
 	
 
@@ -53,40 +55,38 @@ public class Start {
 		window.setContentPane(panel);
 		window.setVisible(true);
 		window.setResizable(false);		
-		window.addMouseListener(mH);
-		window.addMouseMotionListener(mH);
+		panel.addMouseListener(mH);
+		panel.addMouseMotionListener(mH);
 		
 		garden = new GardenScreen(panel.getWidth(), panel.getHeight());
-//		store = new StoreScreen(panel.getWidth(), panel.getHeight());
-//		inventory = new InventoryScreen(panel.getWidth(), panel.getHeight());
+		store = new StoreScreen(panel.getWidth(), panel.getHeight());
+		inventory = new InventoryScreen(panel.getWidth(), panel.getHeight());
 
 
-//		placeholder line to test plant object
-		garden.plotColumnOne[0].plantPlant(1);
+
 //		build new screen with JComboFrame
-//		ScreenSelect travel = new ScreenSelect();
-//		travel.setVisible(true);
-//		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ScreenSelect travel = new ScreenSelect();
+		travel.setVisible(true);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public static void draw(Graphics g, int width, int height) {
 		g.drawString("$" + playerMoney, width / 2, 20);
+		g.setColor(Color.BLUE);
+		if (isWatering) {
+			g.drawString("Watering " + status, width / 2, (int) (height * 0.98));
+		}else {
+			g.drawString(status, width / 2, (int) (height * 0.98));
+		}
 		switch (gameState) {
 		case 0:
 			garden.draw(g, width, height);
-			
-			g.setColor(Color.BLUE);
-			if (isWatering) {
-				g.drawString("Watering " + status, width / 2, (int) (height * 0.98));
-			}else {
-				g.drawString(status, width / 2, (int) (height * 0.98));
-			}
 			break;
 		case 1:
-//			store.draw(g, width, height);
+			store.draw(g, width, height);
 			break;
 		case 2:
-//			inventory.draw(g, width, height);
+			inventory.draw(g, width, height);
 			break;
 		}
 	}

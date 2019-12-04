@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -59,19 +60,36 @@ public class StoreItem extends Button {
 
 	@Override
 	public void isClicked() {
-		for (int i = 0; i < Start.inventory.invetoryType.length; i++) {
-			if (Start.inventory.invetoryType[i] == -1) {
-				Start.inventory.invetoryType[i] = this.itemType;
-				Start.playerMoney -= this.cost;
-				break;
+		if (cost <= Start.playerMoney) {
+			for (int i = 0; i < Start.inventory.inventory.length; i++) {
+				if (Start.inventory.inventory[i].itemType == -1) {
+					Start.inventory.inventory[i].itemType = this.itemType;
+					Start.inventory.inventory[i].plantType = this.plantType;
+					Start.inventory.inventory[i].name = this.name;
+					Start.playerMoney -= this.cost;
+					break;
+				}
 			}
 		}
 	}
 
 	@Override
-	public void draw(Graphics g, int width, int height) {
-		//TO DO: add code to draw the item in the shop
-
+	public void draw(Graphics g) {
+		g.setColor(Color.GRAY);
+		g.fillRect(this.rect.x, this.rect.y, this.rect.width, this.rect.height);
+		
+		switch (this.itemType) {
+		case 0:
+			Plant.draw(g, this.rect.width, this.rect.x, this.rect.y, this.plantType);
+			break;
+		case 1:
+			Color c = new Color(0.50f, 0.25f, 0.0f);
+			g.setColor(c);
+			g.fillOval(this.rect.x + this.rect.width / 4, this.rect.y + this.rect.height / 2, this.rect.width / 3, this.rect.width / 3);
+			g.fillOval(this.rect.x + ((this.rect.width / 4) * 2) , this.rect.y + this.rect.height / 2, this.rect.width / 3, this.rect.width / 3);
+			g.fillOval(this.rect.x + this.rect.width / 3, this.rect.y + this.rect.height / 4 , this.rect.width / 3, this.rect.width / 3);
+			break;
+		}
 	}
 	
 

@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ScreenSelect extends JFrame implements ActionListener{
-        String[] places = {"Store","Garden","Inventory"};
+        String[] places = {"Garden", "Store", "Inventory"};
         JComboBox travel =  new JComboBox(places);
         public ScreenSelect(){
             setLayout(new FlowLayout());
@@ -26,16 +26,24 @@ public class ScreenSelect extends JFrame implements ActionListener{
                 JComboBox cb = (JComboBox)e.getSource();
                 String msg = (String)cb.getSelectedItem();
                 switch(msg){
-	                case "Garden":Start.gameState = 0;
-	                break;
-                    case "Store":Start.gameState = 1;
-                    break;
-                    case "Inventory":Start.gameState = 2;
-
-
+	                case "Garden":
+	                	Start.gameState = 0;
+	                	break;
+                    case "Store":
+                    	Start.gameState = 1;
+                    	Start.isWatering = false;
+                    	Start.usingItem = false;
+                    	Start.itemInUse = -1;
+                    	Start.seedInUse = -1;
+                    	break;
+                    case "Inventory":
+                    	Start.gameState = 2;
+                    	Start.isWatering = false;
+                    	Start.usingItem = false;
+                    	Start.itemInUse = -1;
+                    	Start.seedInUse = -1;
+                    	break;
                 }
-
-
             }
         }
 }

@@ -7,6 +7,6 @@ public abstract class Button {
 	
 	public abstract void isClicked();
 	
-	public abstract void draw(Graphics g, int width, int height);
+	public abstract void draw(Graphics g);
 
 }

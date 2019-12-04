@@ -12,7 +12,7 @@ public class GardenScreen extends Screen{
 	static int plotSize = 0;
 	Color brown = new Color(0.55f, 0.30f, 0.0f);
 	Rectangle water;
-	Button buttons[] = new Button[2];
+	Button[] buttons = new Button[2];
 	
 	public GardenScreen(int width, int height) {
 		int thirdOfWidth = (int) (width * 0.9) / 3;
@@ -91,7 +91,16 @@ public class GardenScreen extends Screen{
 				g.setColor(Color.BLACK);
 				g.drawRect(plotColumnOne[c1].rect.x, plotColumnOne[c1].rect.y, plotColumnOne[c1].rect.width, plotColumnOne[c1].rect.height);
 				if (plotColumnOne[c1].plantType > -1) {
-					plotColumnOne[c1].plantedPlant.draw(g, plotSize, plotColumnOne[c1].rect.x, plotColumnOne[c1].rect.y);
+					Plant.draw(g, plotSize, plotColumnOne[c1].rect.x, plotColumnOne[c1].rect.y, plotColumnOne[c1].plantedPlant.type);
+					if (plotColumnOne[c1].plantedPlant.sucessfulTurns == plotColumnOne[c1].plantedPlant.turnsToGrow) {
+						g.setColor(Color.YELLOW);
+					}else {
+						g.setColor(Color.GREEN);
+					}
+					g.fillRect(plotColumnOne[c1].rect.x , plotColumnOne[c1].rect.y + plotColumnOne[c1].rect.height,
+							(int) (plotColumnOne[c1].rect.width * (plotColumnOne[c1].plantedPlant.sucessfulTurns / plotColumnOne[c1].plantedPlant.turnsToGrow) ), (int) (plotColumnOne[c1].rect.height * 0.3));
+					g.setColor(Color.BLACK);
+					g.drawRect(plotColumnOne[c1].rect.x , plotColumnOne[c1].rect.y + plotColumnOne[c1].rect.height, plotColumnOne[c1].rect.width, (int) (plotColumnOne[c1].rect.height * 0.3));
 				}
 				c1++;
 			}
@@ -107,7 +116,16 @@ public class GardenScreen extends Screen{
 				g.setColor(Color.BLACK);
 				g.drawRect(plotColumnTwo[c2].rect.x, plotColumnTwo[c2].rect.y, plotColumnTwo[c2].rect.width, plotColumnTwo[c2].rect.height);
 				if (plotColumnTwo[c2].plantType > -1) {
-					plotColumnTwo[c2].plantedPlant.draw(g, plotSize, plotColumnTwo[c2].rect.x, plotColumnTwo[c2].rect.y);
+					Plant.draw(g, plotSize, plotColumnTwo[c2].rect.x, plotColumnTwo[c2].rect.y, plotColumnTwo[c2].plantedPlant.type);
+					if (plotColumnTwo[c2].plantedPlant.sucessfulTurns == plotColumnTwo[c2].plantedPlant.turnsToGrow) {
+						g.setColor(Color.YELLOW);
+					}else {
+						g.setColor(Color.GREEN);
+					}
+					g.fillRect(plotColumnTwo[c2].rect.x , plotColumnTwo[c2].rect.y + plotColumnTwo[c2].rect.height,
+							(int) (plotColumnTwo[c2].rect.width * (plotColumnTwo[c2].plantedPlant.sucessfulTurns / plotColumnTwo[c2].plantedPlant.turnsToGrow) ), (int) (plotColumnTwo[c2].rect.height * 0.3));
+					g.setColor(Color.BLACK);
+					g.drawRect(plotColumnTwo[c2].rect.x , plotColumnTwo[c2].rect.y + plotColumnTwo[c2].rect.height, plotColumnTwo[c2].rect.width, (int) (plotColumnTwo[c2].rect.height * 0.3));
 				}
 				c2++;
 			}
@@ -123,7 +141,16 @@ public class GardenScreen extends Screen{
 				g.setColor(Color.BLACK);
 				g.drawRect(plotColumnThree[c3].rect.x, plotColumnThree[c3].rect.y, plotColumnThree[c3].rect.width, plotColumnThree[c3].rect.height);
 				if (plotColumnThree[c3].plantType > -1) {
-					plotColumnThree[c3].plantedPlant.draw(g, plotSize, plotColumnThree[c3].rect.x, plotColumnThree[c3].rect.y);
+					Plant.draw(g, plotSize, plotColumnThree[c3].rect.x, plotColumnThree[c3].rect.y, plotColumnThree[c3].plantedPlant.type);
+					if (plotColumnThree[c3].plantedPlant.sucessfulTurns == plotColumnThree[c3].plantedPlant.turnsToGrow) {
+						g.setColor(Color.YELLOW);
+					}else {
+						g.setColor(Color.GREEN);
+					}
+					g.fillRect(plotColumnThree[c3].rect.x , plotColumnThree[c3].rect.y + plotColumnThree[c3].rect.height,
+							(int) (plotColumnThree[c3].rect.width * (plotColumnThree[c3].plantedPlant.sucessfulTurns / plotColumnThree[c3].plantedPlant.turnsToGrow) ), (int) (plotColumnThree[c3].rect.height * 0.3));
+					g.setColor(Color.BLACK);
+					g.drawRect(plotColumnThree[c3].rect.x , plotColumnThree[c3].rect.y + plotColumnThree[c3].rect.height, plotColumnThree[c3].rect.width, (int) (plotColumnThree[c3].rect.height * 0.3));
 				}
 				c3++;
 			}
@@ -132,10 +159,6 @@ public class GardenScreen extends Screen{
 		g.fillOval(water.x, water.y, water.width, water.height);
 	}
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

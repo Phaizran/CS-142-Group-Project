@@ -7,6 +7,5 @@ public abstract class Screen {
 	
 	public abstract void draw(Graphics g, int width, int height);
 	
-	public abstract void update();
 
 }

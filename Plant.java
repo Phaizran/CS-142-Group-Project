@@ -5,9 +5,9 @@ import java.util.Random;
 public class Plant {
 	Random r = new Random();
 	String name = null; //name of the plant
-	static int type = -1; // int used to identify the plant type
-	int turnsToGrow = -1; // the number of successful turns a plant takes to become harvestable
-	int sucessfulTurns = 0; // the number of successful turns the plant has had so far
+	int type = -1; // int used to identify the plant type
+	float turnsToGrow = -1; // the number of successful turns a plant takes to become harvestable
+	float sucessfulTurns = 0; // the number of successful turns the plant has had so far
 	int waterPerTurn = -1; // the number of times a plant must be watered each turn for the turn to be successful
 	int value = -1; // how much money the player gets when they harvest the plant
 	int timesWatered = 0; // number of times watered this turn
@@ -16,53 +16,53 @@ public class Plant {
 		type = t;
 		if (t == 0) {
 			name = "Rose"; //setting name of type of plant
-			turnsToGrow = r.nextInt(2) + 3; // creates a random number of turns needed before harvest this particular range is 3-5
+			turnsToGrow = r.nextInt(2) + 3.0f; // creates a random number of turns needed before harvest this particular range is 3-5
 			waterPerTurn = 1;
 			value = r.nextInt(5) + 7; // setting random sell value for the plant this particular range is $7-$12
 			
 		}
 		else if(t == 1) {
 			name = "Lavender";
-			turnsToGrow = r.nextInt(3) + 5;
+			turnsToGrow = r.nextInt(3) + 5.0f;
 			waterPerTurn = 1;
 			value = r.nextInt(8) + 6;
 		}
 		else if( t == 2) {
 			name = "Cactus";
-			turnsToGrow = r.nextInt(5) + 9;
+			turnsToGrow = r.nextInt(5) + 9.0f;
 			waterPerTurn = 1;
 			value = r.nextInt(10) + 10;
 		}
 		else if(t == 3) {
 			name = "Meow-er";
-			turnsToGrow = r.nextInt(10) + 8;
+			turnsToGrow = r.nextInt(10) + 8.0f;
 			waterPerTurn = 1;
 			value = r.nextInt(15) + 12;
 		}
 		else if (t == 4) {
 			name = "Strawberry"; //setting name of type of plant
-			turnsToGrow = r.nextInt(2) + 1; // creates a random number of turns needed before harvest this particular range is 1-3
+			turnsToGrow = r.nextInt(2) + 1.0f; // creates a random number of turns needed before harvest this particular range is 1-3
 			waterPerTurn = 1;
 			value = r.nextInt(5) + 5; // setting random sell value for the plant this particular range is $5-$10
 		}
 		
 		else if (t == 5) {
 			name = "Grapes"; //setting name of type of plant
-			turnsToGrow = r.nextInt(2) + 2; // creates a random number of turns needed before harvest this particular range is 2-4
+			turnsToGrow = r.nextInt(2) + 2.0f; // creates a random number of turns needed before harvest this particular range is 2-4
 			waterPerTurn = 1;
 			value = r.nextInt(5) + 6; // setting random sell value for the plant this particular range is $6-$11
 	}
 		
 		else if (t == 6) {
 			name = "Broccoli"; //setting name of type of plant
-			turnsToGrow = r.nextInt(2) + 3; // creates a random number of turns needed before harvest this particular range is 3-5
+			turnsToGrow = r.nextInt(2) + 3.0f; // creates a random number of turns needed before harvest this particular range is 3-5
 			waterPerTurn = 1;
 			value = r.nextInt(5) + 8; // setting random sell value for the plant this particular range is $8- $13
 	}
 		
 		else if (t == 7) {
 			name = "Pumpkin"; //setting name of type of plant
-			turnsToGrow = r.nextInt(2) + 5; // creates a random number of turns needed before harvest this particular range is 5-7
+			turnsToGrow = r.nextInt(2) + 5.0f; // creates a random number of turns needed before harvest this particular range is 5-7
 			waterPerTurn = 1;
 			value = r.nextInt(5) + 15; // setting random sell value for the plant this particular range is $15 - 20
 	}
@@ -70,7 +70,7 @@ public class Plant {
 		
 	}
 	
-	public void draw(Graphics g, int plotSize, int plotX, int plotY) {
+	static public void draw(Graphics g, int plotSize, int plotX, int plotY, int type) {
 		if (type == 0) {
 			g.setColor(Color.GREEN);
 			g.drawLine((int ) (plotX + (plotSize / 2)), plotY + plotSize, (int ) (plotX + (plotSize / 2)), (int) (plotY + (plotSize * 0.15)));

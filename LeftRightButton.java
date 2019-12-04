@@ -16,7 +16,7 @@ public class LeftRightButton extends Button {
 	}
 
 	@Override
-	public void draw(Graphics g, int width, int height) {
+	public void draw(Graphics g) {
 		//TO DO: add code to determine which way the arrow is pointing and draw the button
 
 	}

@@ -1,36 +1,30 @@
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 
 public class StoreScreen extends Screen {
-	int page; // keeps track of what page the user is currently viewing
-	LeftRightButton leftArrow; // Button for changing the viewed page to the previous page
-	LeftRightButton rightArrow; // Button for changing the viewed page to the next page
-	int[] inventoryType = {0, 0, 0, 1}; //TO DO: hard code what items should be in the shop
-	int[] inventoryPlantType = {0, 1, 2, -1}; //TO DO: hard code the plant types for items in the shop 
-							  //(all none seed items should have this value set to -1)
+	int[] inventoryType = {0, 0, 0, 0, 0, 0, 0, 1}; //hard coded shop items
+	int[] inventoryPlantType = {0, 1, 2, 3, 4, 5, 6, -1}; //hard coded plant types for shop items
 	StoreItem[] inventory = new StoreItem[inventoryType.length];
 	
-	//Might be advisable to create a page class and create and array of pages to handle keeping track of the page
 	
 	public StoreScreen(int width, int height) {
-		//TO DO: Set up button size and location based on screen width and height
-		//and initial the StoreItem array using the inventoryType[i] and inventoryPlantType[i]
-		//for the itemType and plantType inputs and using width and height to determine where
-		//on the screen it will be drawn when it is on the current store page
+		int buttonSize = height / 10;
+		int leftMargin = (width / 4) - (buttonSize / 2);
+		int rightMargin = width - ((width / 4) + (buttonSize / 2));
+		for (int i = 0; i < inventory.length; i++) {
+			if (i < 4) {
+				inventory[i] = new StoreItem(leftMargin, buttonSize + (buttonSize * i * 2), buttonSize, buttonSize, inventoryType[i], inventoryPlantType[i]);
+			}else {
+				inventory[i] = new StoreItem(rightMargin, buttonSize + (buttonSize * (i - 4) * 2), buttonSize, buttonSize, inventoryType[i], inventoryPlantType[i]);
+			}
+		}
 	}
 
 	@Override
 	public void draw(Graphics g, int width, int height) {
-		//TO DO: add code to draw items from inventory that are on the current page
-		//add code to draw the LeftRightButtons
-
+		for (int i = 0; i < inventory.length; i++) {
+			inventory[i].draw(g);
+		}
 	}
 
-	@Override
-	public void update() {
-		//Not sure what to do with this yet. Possibly where Button.isClicked() calls will be handled
-
-	}
 
 }
