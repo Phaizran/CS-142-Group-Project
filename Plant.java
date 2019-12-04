@@ -23,7 +23,7 @@ public class Plant {
 		else if(t == 1) {
 			name = "Lavender";
 			turnsToGrow = r.nextInt(3) + 5;
-			waterPerTurn = 2;
+			waterPerTurn = 1;
 			value = r.nextInt(8) + 6;
 		}
 		else if( t == 2) {
@@ -35,7 +35,7 @@ public class Plant {
 		else if(t == 3) {
 			name = "Meow-er";
 			turnsToGrow = r.nextInt(10) + 8;
-			waterPerTurn = 3;
+			waterPerTurn = 1;
 			value = r.nextInt(15) + 12;
 		}
 		else if (t == 4) {
@@ -53,7 +53,7 @@ public class Plant {
 	}
 		
 		else if (t == 6) {
-			name = "Cabbage"; //setting name of type of plant
+			name = "Broccoli"; //setting name of type of plant
 			turnsToGrow = r.nextInt(2) + 3; // creates a random number of turns needed before harvest this particular range is 3-5
 			waterPerTurn = 1;
 			value = r.nextInt(5) + 8; // setting random sell value for the plant this particular range is $8- $13
