@@ -92,7 +92,9 @@ public class MouseHandler extends MouseAdapter{
 			}
 			else if (Start.garden.water.contains(e.getPoint())) {
 				Start.isWatering = true;
-			}
+			}//	else if (Start.garden.next.contains(e.getPoint())) {
+//				Start.garden.nextDay();
+//			}
 			break;
 		case 1:
 			for (int i = 0; i < Start.store.inventory.length; i++) {
