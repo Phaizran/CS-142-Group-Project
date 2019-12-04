@@ -116,7 +116,7 @@ public class PlayerMoney {
 		
 		moneyInPoket = startMoney - playerSpend + plantValue;
 		
-		System.out.println("You have " + startMoney - playerSpend + " usd left.");
+		System.out.println("You have " + (startMoney - playerSpend) + " usd left.");
 		System.out.println(turnsToGrow + " days passed. Your plant is harvestable. ");
 		System.out.println(value);
 		System.out.println("The total amount of money that you have right now is " + moneyInPoket + " usd.");
