@@ -85,17 +85,9 @@ public class PlayerMoney {
 	}
 		
 		playerMoney(turnsToGrow,fC,cost,value);
-	}
+	} 
+	
 
-	
-	
-	// how much does each grown plant worth;
-	// how many time each plant needs to be watered/fertilized;
-	// how much does it cost to water/fertilize cost;
-	// how much money does player has at the beginning;
-	// how many fertilizer can be used for one plant; 
-	// how many seed player can choose at one time;
-	// 
 	
 	public static int playerMoney(int turnsToGrow, int fC, int cost, int value) {
 		
@@ -124,10 +116,10 @@ public class PlayerMoney {
 		
 		moneyInPoket = startMoney - playerSpend + plantValue;
 		
-		System.out.println(startMoney - playerSpend + " usd left.");
+		System.out.println("You have " + startMoney - playerSpend + " usd left.");
 		System.out.println(turnsToGrow + " days passed. Your plant is harvestable. ");
 		System.out.println(value);
-		System.out.println("The total amount of money that player has is " + moneyInPoket + " usd.");
+		System.out.println("The total amount of money that you have right now is " + moneyInPoket + " usd.");
 	
 	
 	
