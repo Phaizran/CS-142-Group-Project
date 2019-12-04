@@ -13,10 +13,11 @@ public class Start {
 	static int playerMoney = 10;
 	static String status = "";
 	static GardenScreen garden;
+	static StoreScreen store;
+	static InventoryScreen inventory;
 	static MouseHandler mH = new MouseHandler();
-	static Graphics gfx;
-	static private int pWidth;
-	static private int pHeight;
+	static boolean isWatering = false;
+	static boolean usingItem = false;
 	
 	
 
@@ -36,9 +37,6 @@ public class Start {
 				g.setBackground(Color.WHITE);
 				g.setColor(Color.BLACK);
 				g.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-				gfx = g;
-				pWidth = width;
-				pHeight = height;
 
 				this.repaint(17000);
 				draw(g, width, height);
@@ -50,7 +48,6 @@ public class Start {
 		int wWidth = (int) (d.width * 0.8);
 		int wHeight = (int) (d.height * 0.8);
 		window.setSize(wWidth, wHeight);
-		garden = new GardenScreen(wWidth, wHeight);
 		window.setBackground(Color.WHITE);
 		panel.setBackground(Color.WHITE);
 		window.setContentPane(panel);
@@ -59,11 +56,13 @@ public class Start {
 		window.addMouseListener(mH);
 		window.addMouseMotionListener(mH);
 		
-		
+		garden = new GardenScreen(panel.getWidth(), panel.getHeight());
+//		store = new StoreScreen(panel.getWidth(), panel.getHeight());
+//		inventory = new InventoryScreen(panel.getWidth(), panel.getHeight());
 
 
 //		placeholder line to test plant object
-		garden.plotColumnOne[0].plantPlant(0);
+		garden.plotColumnOne[0].plantPlant(1);
 //		build new screen with JComboFrame
 //		ScreenSelect travel = new ScreenSelect();
 //		travel.setVisible(true);
@@ -72,20 +71,23 @@ public class Start {
 	
 	public static void draw(Graphics g, int width, int height) {
 		g.drawString("$" + playerMoney, width / 2, 20);
-//		TO DO: write code to determine when to draw garden screen vs other screens
-		garden.draw(g, width, height);
-		
-		g.setColor(Color.BLUE);
-		g.drawString(status, width / 2, (int) (height * 0.98));
-
-
+		switch (gameState) {
+		case 0:
+			garden.draw(g, width, height);
+			
+			g.setColor(Color.BLUE);
+			if (isWatering) {
+				g.drawString("Watering " + status, width / 2, (int) (height * 0.98));
+			}else {
+				g.drawString(status, width / 2, (int) (height * 0.98));
+			}
+			break;
+		case 1:
+//			store.draw(g, width, height);
+			break;
+		case 2:
+//			inventory.draw(g, width, height);
+			break;
+		}
 	}
-	
-	static public int getWidth() {
-		return pWidth;
-	}
-	static public int getHeight() {
-		return pHeight;
-	}
-
 }

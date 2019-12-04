@@ -6,12 +6,13 @@ public class GardenScreen extends Screen{
 	Plot[] plotColumnOne = new Plot[32];
 	Plot[] plotColumnTwo = new Plot[32];
 	Plot[] plotColumnThree = new Plot[32];
+	Plot[] allPlots = new Plot[96];
 	static int rowSize = 4;
 	static int rowsInColumn = 8;
 	static int plotSize = 0;
 	Color brown = new Color(0.55f, 0.30f, 0.0f);
 	Rectangle water;
-	
+	Button buttons[] = new Button[2];
 	
 	public GardenScreen(int width, int height) {
 		int thirdOfWidth = (int) (width * 0.9) / 3;
@@ -52,6 +53,22 @@ public class GardenScreen extends Screen{
 		}
 		for (int i = 0; i < 4; i++) {
 			plotColumnOne[i].isUnlocked = true;
+		}
+		
+		int aP = 0;
+		while (aP < allPlots.length) {
+			for (int i = 0; i < plotColumnOne.length; i++) {
+				allPlots[aP] = plotColumnOne[i];
+				aP++;
+			}
+			for (int i = 0; i < plotColumnTwo.length; i++) {
+				allPlots[aP] = plotColumnTwo[i];
+				aP++;
+			}
+			for (int i = 0; i < plotColumnThree.length; i++) {
+				allPlots[aP] = plotColumnThree[i];
+				aP++;
+			}
 		}
 		
 		water = new Rectangle((int) (width * 0.89), (int) (height * 0.77), (int) (width * 0.1), (int) (width * 0.1));

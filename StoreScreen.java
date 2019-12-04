@@ -6,8 +6,8 @@ public class StoreScreen extends Screen {
 	int page; // keeps track of what page the user is currently viewing
 	LeftRightButton leftArrow; // Button for changing the viewed page to the previous page
 	LeftRightButton rightArrow; // Button for changing the viewed page to the next page
-	int[] inventoryType; //TO DO: hard code what items should be in the shop
-	int[] inventoryPlantType; //TO DO: hard code the plant types for items in the shop 
+	int[] inventoryType = {0, 0, 0, 1}; //TO DO: hard code what items should be in the shop
+	int[] inventoryPlantType = {0, 1, 2, -1}; //TO DO: hard code the plant types for items in the shop 
 							  //(all none seed items should have this value set to -1)
 	StoreItem[] inventory = new StoreItem[inventoryType.length];
 	

@@ -10,6 +10,7 @@ public class Plant {
 	int sucessfulTurns = 0; // the number of successful turns the plant has had so far
 	int waterPerTurn = -1; // the number of times a plant must be watered each turn for the turn to be successful
 	int value = -1; // how much money the player gets when they harvest the plant
+	int timesWatered = 0; // number of times watered this turn
 	
 	public Plant(int t) {
 		type = t;
@@ -23,7 +24,7 @@ public class Plant {
 		else if(t == 1) {
 			name = "Lavender";
 			turnsToGrow = r.nextInt(3) + 5;
-			waterPerTurn = 2;
+			waterPerTurn = 1;
 			value = r.nextInt(8) + 6;
 		}
 		else if( t == 2) {
@@ -35,7 +36,7 @@ public class Plant {
 		else if(t == 3) {
 			name = "Meow-er";
 			turnsToGrow = r.nextInt(10) + 8;
-			waterPerTurn = 3;
+			waterPerTurn = 1;
 			value = r.nextInt(15) + 12;
 		}
 		else if (t == 4) {
@@ -126,7 +127,7 @@ public class Plant {
 			g.drawLine((int)(plotX + (plotSize / 2.2)), (int)(plotY + (plotSize / 3.2)), (int)(plotX + (plotSize / 2.2)), (int)(plotY + (plotSize / 2.5)));
 			g.drawOval((int)(plotX + (plotSize / 2.7)), (int)(plotY + (plotSize / 4.8)), (int)(plotSize / 13), (int)(plotSize / 15));
 			g.drawOval((int)(plotX + (plotSize / 2)), (int)(plotY + (plotSize / 4.8)), (int)(plotSize / 13), (int)(plotSize / 15));
-		}
+		}		
 		else if (type == 4) {//strawberry
 			g.setColor(new Color(65, 199, 38)); //stem
 			g.fillRect((int)(plotX + plotSize /2.3), (int)(plotY + (plotSize*.15)), (int)(plotSize/5.5), (int)(plotSize/5.5));
@@ -216,4 +217,5 @@ public class Plant {
 		//else if () {}
 //		TO DO: write corresponding else if draw calls for other types of plants
 	}
+
 }
