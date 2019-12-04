@@ -59,8 +59,13 @@ public class StoreItem extends Button {
 
 	@Override
 	public void isClicked() {
-		//TO DO: add logic for when the item is clicked on in the shop
-
+		for (int i = 0; i < Start.inventory.invetoryType.length; i++) {
+			if (Start.inventory.invetoryType[i] == -1) {
+				Start.inventory.invetoryType[i] = this.itemType;
+				Start.playerMoney -= this.cost;
+				break;
+			}
+		}
 	}
 
 	@Override
@@ -68,5 +73,6 @@ public class StoreItem extends Button {
 		//TO DO: add code to draw the item in the shop
 
 	}
+	
 
 }

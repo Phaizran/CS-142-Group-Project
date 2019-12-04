@@ -40,6 +40,12 @@ public class MouseHandler extends MouseAdapter{
 		case 0:
 			break;
 		case 1:
+			for (int i = 0; i < Start.store.inventory.length; i++) {
+				if (Start.store.inventory[i].rect.contains(e.getPoint())) {
+					Start.store.inventory[i].isClicked();
+					break;
+				}
+			}
 			break;
 		case 2:
 			break;
