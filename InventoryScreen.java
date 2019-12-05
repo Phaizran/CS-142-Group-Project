@@ -40,6 +40,7 @@ public class InventoryScreen extends Screen {
 		}
 		s.itemType = -1;
 		s.plantType = -1;
+		s.name = null;
 		Start.gameState = 0;
 	}
 

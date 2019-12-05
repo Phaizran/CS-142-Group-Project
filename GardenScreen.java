@@ -72,8 +72,7 @@ public class GardenScreen extends Screen{
 		}
 		
 		water = new Rectangle((int) (width * 0.89), (int) (height * 0.77), (int) (width * 0.1), (int) (width * 0.1));
-		//set up rectangle for next day button
-		next = new Rectangle ((width - plotSize*4), (int)(height*.1), plotSize *3, plotSize);
+		next = new Rectangle((width - plotSize*4), (int)(height*.1), plotSize *3, plotSize);
 		
 	}
 	
@@ -109,20 +108,17 @@ public class GardenScreen extends Screen{
 		
 		g.setColor(Color.black);
 		g.drawRect(next.x, next.y, next.width, next.height);
-		g.drawString("Next Day", (int)(width - plotSize*3.8), (int)((height*.1) + (plotSize * 0.8)));
+		g.drawString("Next Day", next.x + (int) (next.width * 0.2), next.y + (int) (next.height * 0.7));
 	}
 	
-	public void nextDay(int plantType, int timesWatered, float sucessfulTurns, float turnsToGrow) {
-		/*TODO write code that for each plant checks if it are ready to harvest. If not it 
-		 * then checks if they have been successfully cared for and increases 
-		 * successfulTurns if so. Then resets timesWatered to 0. This should use the allPLots array.*/
+	public void nextDay() {
 		
 		for( int i= 0; i < allPlots.length; i++){
 			if(allPlots[i].plantType != -1) {
 				if(allPlots[i].plantedPlant.timesWatered == allPlots[i].plantedPlant.waterPerTurn) {
-					sucessfulTurns++;
-					timesWatered = 0;
+					allPlots[i].plantedPlant.sucessfulTurns++;
 				}
+				allPlots[i].plantedPlant.timesWatered = 0;
 			//Do we want plants to die if they aren't watered for a turn?
 //			if( timesWatered == 0) {
 //				plantType = -1;
