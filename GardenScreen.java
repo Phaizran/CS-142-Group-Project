@@ -117,18 +117,15 @@ public class GardenScreen extends Screen{
 		 * then checks if they have been successfully cared for and increases 
 		 * successfulTurns if so. Then resets timesWatered to 0. This should use the allPLots array.*/
 		
-		for( int i= 0; i < allPlots.length; i++);
-		if( plantType != -1) {
-			if(timesWatered <= 1) {
-				sucessfulTurns++;
-				timesWatered = 0;
-			}
-//			if (fertilizer)
-			if(sucessfulTurns == turnsToGrow) {
-				//plant is in harvest state, should this go in the mouse handler?
-			}
-			if( timesWatered == 0) {
-				plantType = -1;
+		for( int i= 0; i < allPlots.length; i++){
+			if(allPlots[i].plantType != -1) {
+				if(allPlots[i].plantedPlant.timesWatered == allPlots[i].plantedPlant.waterPerTurn) {
+					sucessfulTurns++;
+					timesWatered = 0;
+				}
+			//Do we want plants to die if they aren't watered for a turn?
+//			if( timesWatered == 0) {
+//				plantType = -1;
 			}
 		}
 		
