@@ -1,14 +1,22 @@
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.RenderingHints;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Start {
+public class Start{
 	static int gameState = 0; // keep track of the screen user is on
 	static int playerMoney = 10;
 	static String status = "";
@@ -20,6 +28,9 @@ public class Start {
 	static boolean usingItem = false;
 	static int itemInUse = -1;
 	static int seedInUse = -1;
+    static String[] places = {"Garden", "Store", "Inventory"};
+    static JComboBox travel =  new JComboBox(places);
+    static ScreenSelect sS = new ScreenSelect();
 	
 	
 
@@ -61,12 +72,20 @@ public class Start {
 		garden = new GardenScreen(panel.getWidth(), panel.getHeight());
 		store = new StoreScreen(panel.getWidth(), panel.getHeight());
 		inventory = new InventoryScreen(panel.getWidth(), panel.getHeight());
+		
+		Container c = window.getContentPane();
+		GridBagConstraints gC = new GridBagConstraints();
+		Insets sSI = new Insets((int) (panel.getHeight() * 0.04), 0, 0, (int) (panel.getWidth() * 0.065));
+		gC.anchor =  GridBagConstraints.FIRST_LINE_END;
+		gC.insets = sSI;
+		gC.weightx = 0.01;
+		gC.weighty = 0.01;
+		c.setLayout(new GridBagLayout());
 
+        travel.setSelectedIndex(0);
+        travel.addActionListener(sS);
+        c.add(travel, gC);
 
-
-//		build new screen with JComboFrame
-		ScreenSelect travel = new ScreenSelect();
-		travel.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	

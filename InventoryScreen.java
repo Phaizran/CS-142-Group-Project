@@ -42,6 +42,7 @@ public class InventoryScreen extends Screen {
 		s.plantType = -1;
 		s.name = null;
 		Start.gameState = 0;
+		Start.travel.setSelectedIndex(0);
 	}
 
 
