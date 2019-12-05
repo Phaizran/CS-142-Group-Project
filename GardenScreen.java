@@ -102,7 +102,6 @@ public class GardenScreen extends Screen{
 		g.setColor(Color.BLUE);
 		g.fillOval(water.x, water.y, water.width, water.height);
 		
-//		TODO rewrite next day button draw call using "next" rectangle
 		g.setColor(Color.pink);
 		g.fillRect(next.x, next.y, next.width, next.height);
 		
@@ -118,10 +117,20 @@ public class GardenScreen extends Screen{
 				if(allPlots[i].plantedPlant.timesWatered == allPlots[i].plantedPlant.waterPerTurn) {
 					allPlots[i].plantedPlant.sucessfulTurns++;
 				}
-				allPlots[i].plantedPlant.timesWatered = 0;
-			//Do we want plants to die if they aren't watered for a turn?
-//			if( timesWatered == 0) {
-//				plantType = -1;
+				if(allPlots[i].plantedPlant.timesWatered == 0) {
+					if (allPlots[i].plantedPlant.sucessfulTurns > 0) {
+						allPlots[i].plantedPlant.sucessfulTurns--;
+					}else {
+						Rectangle r = new Rectangle(Start.garden.allPlots[i].rect.x, Start.garden.allPlots[i].rect.y, 
+								Start.garden.allPlots[i].rect.width, Start.garden.allPlots[i].rect.height);
+						Start.garden.allPlots[i] = new Plot();
+						Start.garden.allPlots[i].rect = new Rectangle(r.x, r.y, r.width, r.height);
+						Start.garden.allPlots[i].isUnlocked = true;
+					}
+				}
+				if(allPlots[i].plantType != -1) {
+					allPlots[i].plantedPlant.timesWatered = 0;
+				}
 			}
 		}
 		
