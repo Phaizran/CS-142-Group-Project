@@ -50,24 +50,39 @@ public class StoreItem extends Button {
 			else if(plantType == 7) {
 				this.name = "Pumpkin Seed";
 				this.cost = 8;
-			}//else if () {} TO DO: add more else if statements for other plant types
+			}
 		}
-		else if ( itemType == 1) {//TO DO: add more else if statements for other item types
+		else if (itemType == 1) {
 			this.name = "Fertilizer";
-				this.cost = 4;
-		} 
+			this.cost = 4;
+		}else if (itemType == 2) {
+			this.name = "Row of Plots";
+			this.cost = 30;
+		}
 	}
 
 	@Override
 	public void isClicked() {
 		if (cost <= Start.playerMoney) {
-			for (int i = 0; i < Start.inventory.inventory.length; i++) {
-				if (Start.inventory.inventory[i].itemType == -1) {
-					Start.inventory.inventory[i].itemType = this.itemType;
-					Start.inventory.inventory[i].plantType = this.plantType;
-					Start.inventory.inventory[i].name = this.name;
-					Start.playerMoney -= this.cost;
-					break;
+			if (this.itemType == 2) {
+				for (int i = 0; i < Start.garden.allPlots.length; i++) {
+					if (!Start.garden.allPlots[i].isUnlocked) {
+						for (int j = 0; j < 4; j++) {
+							Start.garden.allPlots[i + j].isUnlocked = true;
+						}
+						Start.playerMoney -= this.cost;
+						break;
+					}
+				}
+			}else {
+				for (int i = 0; i < Start.inventory.inventory.length; i++) {
+					if (Start.inventory.inventory[i].itemType == -1) {
+						Start.inventory.inventory[i].itemType = this.itemType;
+						Start.inventory.inventory[i].plantType = this.plantType;
+						Start.inventory.inventory[i].name = this.name;
+						Start.playerMoney -= this.cost;
+						break;
+					}
 				}
 			}
 		}
@@ -89,6 +104,14 @@ public class StoreItem extends Button {
 			g.fillOval(this.rect.x + ((this.rect.width / 4) * 2) , this.rect.y + this.rect.height / 2, this.rect.width / 3, this.rect.width / 3);
 			g.fillOval(this.rect.x + this.rect.width / 3, this.rect.y + this.rect.height / 4 , this.rect.width / 3, this.rect.width / 3);
 			break;
+		case 2:
+			Color p = new Color(0.55f, 0.30f, 0.0f);
+			g.setColor(p);
+			g.fillRect(this.rect.x + this.rect.width / 5, this.rect.y + this.rect.height / 5,
+					(int) (this.rect.width * 0.6), (int) (this.rect.height * 0.6));
+			g.setColor(Color.BLACK);
+			g.drawRect(this.rect.x + this.rect.width / 5, this.rect.y + this.rect.height / 5,
+					(int) (this.rect.width * 0.6), (int) (this.rect.height * 0.6));
 		}
 	}
 	

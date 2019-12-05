@@ -34,9 +34,9 @@ public class MouseHandler extends MouseAdapter{
 			if (Start.garden.water.contains(e.getPoint())) {
 				Start.status = "Water";
 			}
-//			if (Start.garden.next.contains(e.getPoint())) {
-//				Start.status = "Next Day";
-//			}
+			if (Start.garden.next.contains(e.getPoint())) {
+				Start.status = "Next Day";
+			}
 			break;
 		case 1:
 			for (int i = 0; i < Start.store.inventory.length; i++) {
@@ -51,7 +51,7 @@ public class MouseHandler extends MouseAdapter{
 		case 2:
 			for (int i = 0; i < Start.inventory.inventory.length; i++) {
 				if (Start.inventory.inventory[i].rect.contains(e.getPoint())) {
-					if (Start.inventory.inventory[i].itemType != 1) {
+					if (Start.inventory.inventory[i].itemType != -1) {
 						Start.status = "Use " + Start.inventory.inventory[i].name + "?";
 						break;
 						}else {
@@ -94,15 +94,17 @@ public class MouseHandler extends MouseAdapter{
 			else if (Start.isWatering) {
 				for (int i = 0; i < Start.garden.allPlots.length; i++) {
 					if (Start.garden.allPlots[i].rect.contains(e.getPoint())) {
-						Start.garden.allPlots[i].plantedPlant.timesWatered++;
-						Start.isWatering = false;
+						if (Start.garden.allPlots[i].plantType != -1) {
+							Start.garden.allPlots[i].plantedPlant.timesWatered++;
+						}
 					}
 				}
+				Start.isWatering = false;
 			}
 			else if (Start.garden.water.contains(e.getPoint())) {
 				Start.isWatering = true;
-//			}else if (Start.garden.next.contains(e.getPoint())) {
-//				Start.garden.nextDay();
+			}else if (Start.garden.next.contains(e.getPoint())) {
+				Start.garden.nextDay();
 			}else if (!Start.usingItem) {
 				for (int i = 0; i < Start.garden.allPlots.length; i++) {
 					if (Start.garden.allPlots[i].rect.contains(e.getPoint()) &&
