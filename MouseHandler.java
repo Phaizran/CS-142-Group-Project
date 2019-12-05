@@ -1,3 +1,4 @@
+import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -11,7 +12,12 @@ public class MouseHandler extends MouseAdapter{
 				if (Start.garden.allPlots[i].rect.contains(e.getPoint())) {
 					if (Start.garden.allPlots[i].isUnlocked) {
 						if	(Start.garden.allPlots[i].plantType != -1) {
-							Start.status = Start.garden.allPlots[i].plantedPlant.name;
+							if (Start.garden.allPlots[i].plantedPlant.sucessfulTurns == 
+									Start.garden.allPlots[i].plantedPlant.turnsToGrow) {
+								Start.status = "Harvest " + Start.garden.allPlots[i].plantedPlant.name;
+							}else {
+								Start.status = Start.garden.allPlots[i].plantedPlant.name;
+							}
 							break;
 						}else {
 							Start.status = "Empty Plot";
@@ -76,6 +82,9 @@ public class MouseHandler extends MouseAdapter{
 							break;
 						case 1:
 							Start.garden.allPlots[i].plantedPlant.sucessfulTurns++;
+	                    	Start.usingItem = false;
+	                    	Start.itemInUse = -1;
+	                    	Start.seedInUse = -1;
 							break;
 						}
 						break;
@@ -92,9 +101,23 @@ public class MouseHandler extends MouseAdapter{
 			}
 			else if (Start.garden.water.contains(e.getPoint())) {
 				Start.isWatering = true;
-			}//	else if (Start.garden.next.contains(e.getPoint())) {
+//			}else if (Start.garden.next.contains(e.getPoint())) {
 //				Start.garden.nextDay();
-//			}
+			}else if (!Start.usingItem) {
+				for (int i = 0; i < Start.garden.allPlots.length; i++) {
+					if (Start.garden.allPlots[i].rect.contains(e.getPoint()) &&
+							Start.garden.allPlots[i].plantedPlant.sucessfulTurns == 
+							Start.garden.allPlots[i].plantedPlant.turnsToGrow) {
+						Rectangle r = new Rectangle(Start.garden.allPlots[i].rect.x, Start.garden.allPlots[i].rect.y, 
+								Start.garden.allPlots[i].rect.width, Start.garden.allPlots[i].rect.height);
+						Start.playerMoney += Start.garden.allPlots[i].plantedPlant.value;
+						Start.garden.allPlots[i] = new Plot();
+						Start.garden.allPlots[i].rect = new Rectangle(r.x, r.y, r.width, r.height);
+						Start.garden.allPlots[i].isUnlocked = true;
+					}
+				}
+			}
+
 			break;
 		case 1:
 			for (int i = 0; i < Start.store.inventory.length; i++) {

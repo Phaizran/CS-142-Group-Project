@@ -76,85 +76,28 @@ public class GardenScreen extends Screen{
 		
 	}
 	
-	public void draw(Graphics g, int width, int height) {
-		int c1 = 0;
-		int c2 = 0;
-		int c3 = 0;
-		
-		for (int r = 0; r < rowsInColumn; r++) {
-			for (int p = 0; p < rowSize; p++) {
-				if (plotColumnOne[c1].isUnlocked == false) {
+	public void draw(Graphics g, int width, int height) {		
+		for (int i = 0; i < allPlots.length; i++) {
+				if (allPlots[i].isUnlocked == false) {
 					g.setColor(Color.lightGray);
 				}else {
 					g.setColor(brown);
 				}
-				g.fillRect(plotColumnOne[c1].rect.x, plotColumnOne[c1].rect.y, plotColumnOne[c1].rect.width, plotColumnOne[c1].rect.height);
+				g.fillRect(allPlots[i].rect.x, allPlots[i].rect.y, allPlots[i].rect.width, allPlots[i].rect.height);
 				g.setColor(Color.BLACK);
-				g.drawRect(plotColumnOne[c1].rect.x, plotColumnOne[c1].rect.y, plotColumnOne[c1].rect.width, plotColumnOne[c1].rect.height);
-				if (plotColumnOne[c1].plantType > -1) {
-					Plant.draw(g, plotSize, plotColumnOne[c1].rect.x, plotColumnOne[c1].rect.y, plotColumnOne[c1].plantedPlant.type);
-					if (plotColumnOne[c1].plantedPlant.sucessfulTurns == plotColumnOne[c1].plantedPlant.turnsToGrow) {
+				g.drawRect(allPlots[i].rect.x, allPlots[i].rect.y, allPlots[i].rect.width, allPlots[i].rect.height);
+				if (allPlots[i].plantType > -1) {
+					Plant.draw(g, plotSize, allPlots[i].rect.x, allPlots[i].rect.y, allPlots[i].plantedPlant.type);
+					if (allPlots[i].plantedPlant.sucessfulTurns == allPlots[i].plantedPlant.turnsToGrow) {
 						g.setColor(Color.YELLOW);
 					}else {
 						g.setColor(Color.GREEN);
 					}
-					g.fillRect(plotColumnOne[c1].rect.x , plotColumnOne[c1].rect.y + plotColumnOne[c1].rect.height,
-							(int) (plotColumnOne[c1].rect.width * (plotColumnOne[c1].plantedPlant.sucessfulTurns / plotColumnOne[c1].plantedPlant.turnsToGrow) ), (int) (plotColumnOne[c1].rect.height * 0.3));
+					g.fillRect(allPlots[i].rect.x , allPlots[i].rect.y + allPlots[i].rect.height,
+							(int) (allPlots[i].rect.width * (allPlots[i].plantedPlant.sucessfulTurns / allPlots[i].plantedPlant.turnsToGrow) ), (int) (allPlots[i].rect.height * 0.3));
 					g.setColor(Color.BLACK);
-					g.drawRect(plotColumnOne[c1].rect.x , plotColumnOne[c1].rect.y + plotColumnOne[c1].rect.height, plotColumnOne[c1].rect.width, (int) (plotColumnOne[c1].rect.height * 0.3));
+					g.drawRect(allPlots[i].rect.x , allPlots[i].rect.y + allPlots[i].rect.height, allPlots[i].rect.width, (int) (allPlots[i].rect.height * 0.3));
 				}
-				c1++;
-			}
-		}
-		for (int r = 0; r < rowsInColumn; r++) {
-			for (int p = 0; p < rowSize; p++) {
-				if (plotColumnTwo[c2].isUnlocked == false) {
-					g.setColor(Color.lightGray);
-				}else {
-					g.setColor(brown);
-				}
-				g.fillRect(plotColumnTwo[c2].rect.x, plotColumnTwo[c2].rect.y, plotColumnTwo[c2].rect.width, plotColumnTwo[c2].rect.height);
-				g.setColor(Color.BLACK);
-				g.drawRect(plotColumnTwo[c2].rect.x, plotColumnTwo[c2].rect.y, plotColumnTwo[c2].rect.width, plotColumnTwo[c2].rect.height);
-				if (plotColumnTwo[c2].plantType > -1) {
-					Plant.draw(g, plotSize, plotColumnTwo[c2].rect.x, plotColumnTwo[c2].rect.y, plotColumnTwo[c2].plantedPlant.type);
-					if (plotColumnTwo[c2].plantedPlant.sucessfulTurns == plotColumnTwo[c2].plantedPlant.turnsToGrow) {
-						g.setColor(Color.YELLOW);
-					}else {
-						g.setColor(Color.GREEN);
-					}
-					g.fillRect(plotColumnTwo[c2].rect.x , plotColumnTwo[c2].rect.y + plotColumnTwo[c2].rect.height,
-							(int) (plotColumnTwo[c2].rect.width * (plotColumnTwo[c2].plantedPlant.sucessfulTurns / plotColumnTwo[c2].plantedPlant.turnsToGrow) ), (int) (plotColumnTwo[c2].rect.height * 0.3));
-					g.setColor(Color.BLACK);
-					g.drawRect(plotColumnTwo[c2].rect.x , plotColumnTwo[c2].rect.y + plotColumnTwo[c2].rect.height, plotColumnTwo[c2].rect.width, (int) (plotColumnTwo[c2].rect.height * 0.3));
-				}
-				c2++;
-			}
-		}
-		for (int r = 0; r < rowsInColumn; r++) {
-			for (int p = 0; p < rowSize; p++) {
-				if (plotColumnThree[c3].isUnlocked == false) {
-					g.setColor(Color.lightGray);
-				}else {
-					g.setColor(brown);
-				}
-				g.fillRect(plotColumnThree[c3].rect.x, plotColumnThree[c3].rect.y, plotColumnThree[c3].rect.width, plotColumnThree[c3].rect.height);
-				g.setColor(Color.BLACK);
-				g.drawRect(plotColumnThree[c3].rect.x, plotColumnThree[c3].rect.y, plotColumnThree[c3].rect.width, plotColumnThree[c3].rect.height);
-				if (plotColumnThree[c3].plantType > -1) {
-					Plant.draw(g, plotSize, plotColumnThree[c3].rect.x, plotColumnThree[c3].rect.y, plotColumnThree[c3].plantedPlant.type);
-					if (plotColumnThree[c3].plantedPlant.sucessfulTurns == plotColumnThree[c3].plantedPlant.turnsToGrow) {
-						g.setColor(Color.YELLOW);
-					}else {
-						g.setColor(Color.GREEN);
-					}
-					g.fillRect(plotColumnThree[c3].rect.x , plotColumnThree[c3].rect.y + plotColumnThree[c3].rect.height,
-							(int) (plotColumnThree[c3].rect.width * (plotColumnThree[c3].plantedPlant.sucessfulTurns / plotColumnThree[c3].plantedPlant.turnsToGrow) ), (int) (plotColumnThree[c3].rect.height * 0.3));
-					g.setColor(Color.BLACK);
-					g.drawRect(plotColumnThree[c3].rect.x , plotColumnThree[c3].rect.y + plotColumnThree[c3].rect.height, plotColumnThree[c3].rect.width, (int) (plotColumnThree[c3].rect.height * 0.3));
-				}
-				c3++;
-			}
 		}
 		g.setColor(Color.BLUE);
 		g.fillOval(water.x, water.y, water.width, water.height);
