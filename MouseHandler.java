@@ -108,6 +108,7 @@ public class MouseHandler extends MouseAdapter{
 			}else if (!Start.usingItem) {
 				for (int i = 0; i < Start.garden.allPlots.length; i++) {
 					if (Start.garden.allPlots[i].rect.contains(e.getPoint()) &&
+							Start.garden.allPlots[i].plantType != -1 &&
 							Start.garden.allPlots[i].plantedPlant.sucessfulTurns == 
 							Start.garden.allPlots[i].plantedPlant.turnsToGrow) {
 						Rectangle r = new Rectangle(Start.garden.allPlots[i].rect.x, Start.garden.allPlots[i].rect.y, 
