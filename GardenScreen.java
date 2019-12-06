@@ -72,7 +72,7 @@ public class GardenScreen extends Screen{
 		}
 		
 		water = new Rectangle((int) (width * 0.89), (int) (height * 0.77), (int) (width * 0.1), (int) (width * 0.1));
-		//set up rectangle for next day button
+		next = new Rectangle((width - plotSize*4), (int)(height*.1), plotSize *3, plotSize);
 		
 	}
 	
@@ -102,19 +102,37 @@ public class GardenScreen extends Screen{
 		g.setColor(Color.BLUE);
 		g.fillOval(water.x, water.y, water.width, water.height);
 		
-//		TODO rewrite next day button draw call using "next" rectangle
 		g.setColor(Color.pink);
-		g.fillRect((width - plotSize*4), (int)(height*.1), plotSize *3, plotSize);
+		g.fillRect(next.x, next.y, next.width, next.height);
 		
 		g.setColor(Color.black);
-		g.drawRect((width - plotSize*4), (int)(height*.1), plotSize *3, plotSize);
-		g.drawString("Next Day", (int)(width - plotSize*3.8), (int)((height*.1) + (plotSize * 0.8)));
+		g.drawRect(next.x, next.y, next.width, next.height);
+		g.drawString("Next Day", next.x + (int) (next.width * 0.2), next.y + (int) (next.height * 0.7));
 	}
 	
 	public void nextDay() {
-		/*TODO write code that for each plant checks if it are ready to harvest. If not it 
-		 * then checks if they have been successfully cared for and increases 
-		 * successfulTurns if so. Then resets timesWatered to 0. This should use the allPLots array.*/
+		
+		for( int i= 0; i < allPlots.length; i++){
+			if(allPlots[i].plantType != -1) {
+				if(allPlots[i].plantedPlant.timesWatered == allPlots[i].plantedPlant.waterPerTurn) {
+					allPlots[i].plantedPlant.sucessfulTurns++;
+				}
+				if(allPlots[i].plantedPlant.timesWatered == 0) {
+					if (allPlots[i].plantedPlant.sucessfulTurns > 0) {
+						allPlots[i].plantedPlant.sucessfulTurns--;
+					}else {
+						Rectangle r = new Rectangle(Start.garden.allPlots[i].rect.x, Start.garden.allPlots[i].rect.y, 
+								Start.garden.allPlots[i].rect.width, Start.garden.allPlots[i].rect.height);
+						Start.garden.allPlots[i] = new Plot();
+						Start.garden.allPlots[i].rect = new Rectangle(r.x, r.y, r.width, r.height);
+						Start.garden.allPlots[i].isUnlocked = true;
+					}
+				}
+				if(allPlots[i].plantType != -1) {
+					allPlots[i].plantedPlant.timesWatered = 0;
+				}
+			}
+		}
 		
     	Start.isWatering = false;
     	Start.usingItem = false;
